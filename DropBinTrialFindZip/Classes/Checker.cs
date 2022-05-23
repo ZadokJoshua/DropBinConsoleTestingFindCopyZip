@@ -2,34 +2,36 @@
 {
     public class Checker
     {
+        ZipClass objectToZip = new ZipClass();
+        string ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         public string CheckingFolder(string path)
         {
-            var binDirectory = Path.Combine(path, "bin");
-            var objDirectory = Path.Combine(path, "obj");
-
             if (Directory.Exists(path))
             {
-                //if (Directory.Exists(binDirectory) && Directory.Exists(objDirectory))
-                //{
-                    // CopyAll()
-                    Directory.Delete(binDirectory);
-                    Directory.Delete(objDirectory);
-                    
-                    ZipClass objectToZip = new ZipClass();
-                    var ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var removal = new Deleter().DeletingOperation(path);
+
+                if (removal is true)
+                {
                     objectToZip.ZipFileOperation(path, ZippedFolderPath);
                     return "Project has been Dropbined";
-
-                //}
-                //else
-                //{
-                //    return "Invalid Bin and Obj folders";
-                //}
+                }
+                else
+                {
+                    Console.WriteLine("No Bin or Obj or Both found"); 
+                    objectToZip.ZipFileOperation(path, ZippedFolderPath);
+                    return "Project has been Dropbined";
+                }
             }
             else
             {
-                return "No found";
+                return "Not found";
             }
         }
     }
 }
+
+/*                    ZipClass objectToZip = new ZipClass();
+                    var ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    objectToZip.ZipFileOperation(path, ZippedFolderPath);
+*/

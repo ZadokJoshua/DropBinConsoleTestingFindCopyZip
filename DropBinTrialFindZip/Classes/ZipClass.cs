@@ -4,6 +4,8 @@ namespace DropBinTrialFindZip.Classes
 {
     public class ZipClass
     {
+        public static string ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
         public void ZipFileOperation(string confirmedPath, string zipFilePath)
         {
             var startPath = confirmedPath;          
