@@ -6,11 +6,10 @@ namespace DropBinTrialFindZip.Classes
     {
         public static string ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-        public void ZipFileOperation(string confirmedPath, string zipFilePath)
+        public void ZipFileOperation(string confirmedPath)
         {
-            var startPath = confirmedPath;          
-            var zipPath = zipFilePath;
-            ZipFile.CreateFromDirectory(startPath, Path.Combine(zipPath, @"Zadok.zip"));
+            var startPath = confirmedPath;
+            ZipFile.CreateFromDirectory(confirmedPath, Path.Combine(ZippedFolderPath, @"Zadok.zip"));
         }
     }
 }

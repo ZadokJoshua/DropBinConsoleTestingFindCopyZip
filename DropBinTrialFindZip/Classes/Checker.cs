@@ -3,7 +3,6 @@
     public class Checker
     {
         ZipClass objectToZip = new ZipClass();
-        string ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         public string CheckingFolder(string path)
         {
@@ -13,13 +12,13 @@
 
                 if (removal is true)
                 {
-                    objectToZip.ZipFileOperation(path, ZippedFolderPath);
+                    objectToZip.ZipFileOperation(path);
                     return "Project has been Dropbined";
                 }
                 else
                 {
                     Console.WriteLine("No Bin or Obj or Both found"); 
-                    objectToZip.ZipFileOperation(path, ZippedFolderPath);
+                    objectToZip.ZipFileOperation(path);
                     return "Project has been Dropbined";
                 }
             }
