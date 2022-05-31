@@ -6,8 +6,8 @@ Console.Write("Path:");
 string testingPath1 = Console.ReadLine();
 var testingPath = @testingPath1;
 
-Console.WriteLine("\t 1- DropBin only             2- Copy file and DropBin");
-Console.WriteLine("\t 3- Rename file and DropBin  4- Do 2, 3 and DropBin");
+Console.WriteLine("\t1- DropBin only             2- Copy file and DropBin");
+Console.WriteLine("\t3- Rename file and DropBin  4- Do 2, 3 and DropBin");
 int option = Convert.ToInt32(Console.ReadLine());
 
 switch (option)
