@@ -2,8 +2,6 @@
 {
     public class Checker
     {
-        ZipClass objectToZip = new ZipClass();
-
         public static bool CheckingFolder(string path)
         {
             if (Directory.Exists(path))

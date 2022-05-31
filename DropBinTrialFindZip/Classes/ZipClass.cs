@@ -8,8 +8,12 @@ namespace DropBinTrialFindZip.Classes
 
         public static void ZipFileOperation(string confirmedPath)
         {
-            var startPath = confirmedPath;
             ZipFile.CreateFromDirectory(confirmedPath, Path.Combine(ZippedFolderPath, @"Zadok.zip"));
+        }
+
+        public static void ZipFileOperation(string confirmedPath, string newPath)
+        {
+            ZipFile.CreateFromDirectory(confirmedPath, Path.Combine(newPath, @"Zadok.zip"));
         }
     }
 }
