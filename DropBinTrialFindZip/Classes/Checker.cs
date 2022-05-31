@@ -4,27 +4,15 @@
     {
         ZipClass objectToZip = new ZipClass();
 
-        public string CheckingFolder(string path)
+        public static bool CheckingFolder(string path)
         {
             if (Directory.Exists(path))
             {
-                var removal = new Deleter().DeletingOperation(path);
-
-                if (removal is true)
-                {
-                    objectToZip.ZipFileOperation(path);
-                    return "Project has been Dropbined";
-                }
-                else
-                {
-                    Console.WriteLine("No Bin or Obj or Both found"); 
-                    objectToZip.ZipFileOperation(path);
-                    return "Project has been Dropbined";
-                }
+                return true;
             }
             else
             {
-                return "Not found";
+                return false;
             }
         }
     }

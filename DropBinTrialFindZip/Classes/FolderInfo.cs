@@ -8,12 +8,8 @@ namespace DropBinTrialFindZip.Classes
 {
     public class FolderInfo
     {
-        public string FolderNewName { get; set; }
-
-
-        public FolderInfo(string newName)
-        {
-            FolderNewName = newName;
-        }
+        public virtual string FolderNewName { get; set; }
+        public virtual string FolderPath { get; set; }
+        public virtual DateTime TimeOfCreation { get ; set; } 
     }
 }

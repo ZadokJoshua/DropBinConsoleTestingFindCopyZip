@@ -2,11 +2,8 @@
 {
     public class Deleter
     {
-        bool originalBoolean = false;
-
-        public bool DeletingOperation(string path)
+        public static bool DeletingOperation(string path)
         {
-            
             var binDirectory = Path.Combine(path, "bin");
             var objDirectory = Path.Combine(path, "obj");
 
@@ -14,19 +11,22 @@
             {
                 Directory.Delete(binDirectory);
                 Directory.Delete(objDirectory);
-                return originalBoolean = true;
+                return true;
             }
             else if(Directory.Exists(binDirectory) && !Directory.Exists(objDirectory))
             {
                 Directory.Delete(binDirectory);
-                return originalBoolean = true;
+                return true;
             }
             else if (!Directory.Exists(binDirectory) && Directory.Exists(objDirectory))
             {
                 Directory.Delete(objDirectory);
-                return originalBoolean = true;
+                return true;
             }
-            else { return originalBoolean = false; }
+            else 
+            { 
+                return false; 
+            }
         }
     }
 }

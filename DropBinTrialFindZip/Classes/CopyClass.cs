@@ -8,6 +8,9 @@ namespace DropBinTrialFindZip.Classes
 {
     public class CopyClass
     {
-
+        public void CopyDirectory(string path, string newPath)
+        {
+            File.Copy(path, newPath, true);
+        }
     }
 }
