@@ -16,9 +16,3 @@
     }
 }
 
-
-/*                  
- *                  ZipClass objectToZip = new ZipClass();
- *                  var ZippedFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
- *                  objectToZip.ZipFileOperation(path, ZippedFolderPath);
-*/

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DropBinTrialFindZip.Classes
 {
-    public class CopyClass
+    public class Copier
     {
         public static void CopyDirectory(string path, string newPath)
         {
-            File.Copy(path, newPath, true);
+            File.Copy(path, newPath);
         }
     }
 }
