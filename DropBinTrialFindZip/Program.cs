@@ -4,16 +4,19 @@ Console.WriteLine("Welcome To DropBin");
 
 Loader.Loading();
 
-Console.WriteLine("What project folder to you want to DropBin? (Please give us a path)");
+Console.WriteLine("What project folder do you want to DropBin? (Please provide a path)");
 Console.Write("Path: ");
 
 // Folder info
-string ProjectPath = Console.ReadLine();
-string MainProjectPath = @ProjectPath;
+string MainProjectPath = Console.ReadLine();
 string ProjectName = new DirectoryInfo(MainProjectPath).Name;
+Console.WriteLine("Your project name: " + ProjectName);
 
-Console.WriteLine("\n\t1- DropBin only             2- Copy file and DropBin");
-Console.WriteLine("\t3- Rename file and DropBin  4- Do 2, 3 and DropBin\n");
+Loader.Loading2();
+
+Console.WriteLine("Select an option");
+Console.WriteLine("\n\t1- DropBin only           2- Create Copy and DropBin");
+Console.WriteLine("\t3- Rename before DropBin  4- Do 2, 3 and DropBin\n");
 Console.Write("Option: ");
 
 int option = Convert.ToInt32(Console.ReadLine());
@@ -27,11 +30,11 @@ switch (option)
         break;
 
     case 2:
-        Console.Write("Copy and Move folder to: ");
-        string testingPath2 = Console.ReadLine();
-        Copier.CopyDirectory(MainProjectPath, @testingPath2);
-        string newFilePath = Path.Combine(testingPath2, $"{ProjectName}");
-        Operator.SwitchOperator(newFilePath, testingPath2, ProjectName);
+        Console.Write("Copy folder to: ");
+        string CopiedFolderPath = Console.ReadLine();
+        Copier.CopyDirectory(MainProjectPath, CopiedFolderPath, true);
+        //string newFilePath = Path.Combine(testingPath2, $"{ProjectName}");
+        //Operator.SwitchOperator(newFilePath, testingPath2, ProjectName);
         break;
 
     case 3:
