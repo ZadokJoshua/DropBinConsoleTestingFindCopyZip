@@ -9,13 +9,14 @@ namespace DropBinTrialFindZip.Classes
     public class Copier
     {
         /* 
-         * Code: GetDirectoryInfo() and CopyDirectory() methods
+         * Code: CopyDirectory() 
          * Adapted from: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
          * Title: How to: Copy directories
-         * Author: 15 contibutors
+         * Author: .NET Technical documentation (15 contibutors)
          * Date:  01/14/2022
-         * Cited: Jun 1, 2022
+         * Cited: 06/01/2022
          */
+
         public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
         {
             // Get information about the source directory

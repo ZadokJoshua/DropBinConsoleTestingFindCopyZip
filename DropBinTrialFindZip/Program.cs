@@ -15,7 +15,7 @@ Console.WriteLine("Your project name: " + ProjectName);
 Loader.Loading2();
 
 Console.WriteLine("Select an option");
-Console.WriteLine("\n\t1- DropBin only           2- Create Copy and DropBin");
+Console.WriteLine("\n\t1- DropBin only           2- Copy and DropBin");
 Console.WriteLine("\t3- Rename before DropBin  4- Do 2, 3 and DropBin\n");
 Console.Write("Option: ");
 
@@ -30,19 +30,21 @@ switch (option)
         break;
 
     case 2:
-        Console.Write("Copy folder to: ");
-        string CopiedFolderPath = Console.ReadLine();
-        Copier.CopyDirectory(MainProjectPath, CopiedFolderPath, true);
-        //string newFilePath = Path.Combine(testingPath2, $"{ProjectName}");
-        //Operator.SwitchOperator(newFilePath, testingPath2, ProjectName);
+        //Console.Write("Copy folder to: ");
+        //string CopiedFolderPath = Console.ReadLine();
+        //Copier.CopyDirectory(MainProjectPath, CopiedFolderPath, true);
+        ////string newFilePath = Path.Combine(testingPath2, $"{ProjectName}");
+        ////Operator.SwitchOperator(newFilePath, testingPath2, ProjectName);
         break;
 
     case 3:
-        Console.WriteLine("New folder to: ");
-        //string testingPath2 = Console.ReadLine();
-        //Operator.SwitchOperator(testingPath, testingPath2);
+        Console.WriteLine("Change zipped folder name to: ");
+        string NewProjectName = Console.ReadLine();
+        Operator.SwitchOperator(MainProjectPath, NewProjectName);
         break;
+
     case 4:
+        // Do case 2, 3 and DropBin
         break;
     default:
         break;
