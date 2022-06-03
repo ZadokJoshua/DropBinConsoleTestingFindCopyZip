@@ -1,6 +1,7 @@
 ﻿using DropBinTrialFindZip.Classes;
+using Microsoft.VisualBasic.FileIO;
 
-Console.WriteLine("Welcome To DropBin");
+Console.WriteLine("Welcome To DropBin", Console.ForegroundColor = ConsoleColor.DarkGreen);
 
 Loader.Loading();
 
@@ -12,7 +13,7 @@ string MainProjectPath = Console.ReadLine();
 string ProjectName = new DirectoryInfo(MainProjectPath).Name;
 Console.WriteLine("Your project name: " + ProjectName);
 
-Loader.Loading2();
+Loader.Loading();
 
 Console.WriteLine("Select an option");
 Console.WriteLine("\n\t1- DropBin only           2- Copy and DropBin");
@@ -21,31 +22,54 @@ Console.Write("Option: ");
 
 int option = Convert.ToInt32(Console.ReadLine());
 
-Loader.Loading2();
+Loader.Loading();
 
 switch (option)
 {
     case 1:
-        Operator.SwitchOperator(MainProjectPath, ProjectName);
+        try
+        {
+            Operator.SwitchOperator(MainProjectPath, ProjectName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
         break;
 
     case 2:
-        //Console.Write("Copy folder to: ");
-        //string CopiedFolderPath = Console.ReadLine();
-        //Copier.CopyDirectory(MainProjectPath, CopiedFolderPath, true);
-        ////string newFilePath = Path.Combine(testingPath2, $"{ProjectName}");
-        ////Operator.SwitchOperator(newFilePath, testingPath2, ProjectName);
+        try
+        {
+            Console.Write("Copy folder to: ");
+            string CopiedFolderPath = Console.ReadLine();
+            Copier.CopyDirectory(MainProjectPath, CopiedFolderPath);
+            string newFilePath = Path.Combine(CopiedFolderPath, ProjectName);
+            Operator.SwitchOperator(newFilePath, CopiedFolderPath, ProjectName);
+            Directory.Delete(newFilePath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
         break;
 
     case 3:
-        Console.WriteLine("Change zipped folder name to: ");
+        Console.Write("Change zipped folder name to: ");
         string NewProjectName = Console.ReadLine();
-        Operator.SwitchOperator(MainProjectPath, NewProjectName);
+        try
+        {
+            Operator.SwitchOperator(MainProjectPath, NewProjectName);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
         break;
 
     case 4:
         // Do case 2, 3 and DropBin
         break;
+
     default:
         break;
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.VisualBasic.FileIO;
 
 namespace DropBinTrialFindZip.Classes
 {
@@ -10,45 +6,52 @@ namespace DropBinTrialFindZip.Classes
     {
         /* 
          * Code: CopyDirectory() 
-         * Adapted from: https://docs.microsoft.com/en-us/dotnet/standard/io/how-to-copy-directories
-         * Title: How to: Copy directories
-         * Author: .NET Technical documentation (15 contibutors)
-         * Date:  01/14/2022
-         * Cited: 06/01/2022
+         * Adapted from: https://stackoverflow.com/questions/7146021/copy-all-files-in-directory
+         * Title: Copy all files in directory
+         * Author: https://stackoverflow.com/users/572644/daniel-hilgarth
+         * Date:  Aug 22, 2011 
          */
 
-        public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+        public static void CopyDirectory(string sourceDirectoryPath, string targetDirectoryPath)
         {
-            // Get information about the source directory
-            var dir = new DirectoryInfo(sourceDir);
-
-            // Check if the source directory exists
-            if (!dir.Exists)
-                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
-
-            // Cache directories before we start copying
-            DirectoryInfo[] dirs = dir.GetDirectories();
-
-            // Create the destination directory
-            Directory.CreateDirectory(destinationDir);
-
-            // Get the files in the source directory and copy to the destination directory
-            foreach (FileInfo file in dir.GetFiles())
-            {
-                string targetFilePath = Path.Combine(destinationDir, file.Name);
-                file.CopyTo(targetFilePath);
-            }
-
-            // If recursive and copying subdirectories, recursively call this method
-            if (recursive)
-            {
-                foreach (DirectoryInfo subDir in dirs)
-                {
-                    string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
-                    CopyDirectory(subDir.FullName, newDestinationDir, true);
-                }
-            }
+            Loader.Loading();
+            Console.WriteLine(@"Copying... {0} ... Please stand by ", sourceDirectoryPath);
+            FileSystem.CopyDirectory(sourceDirectoryPath, targetDirectoryPath);
         }
+        
+
+        //public static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+        //{
+        //    // Get information about the source directory
+        //    var dir = new DirectoryInfo(sourceDir);
+
+        //    // Check if the source directory exists
+        //    if (!dir.Exists)
+        //        throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+        //    // Cache directories before we start copying
+        //    DirectoryInfo[] dirs = dir.GetDirectories();
+
+        //    // Create the destination directory
+        //    Directory.CreateDirectory(destinationDir);
+
+        //    // Get the files in the source directory and copy to the destination directory
+        //    foreach (FileInfo file in dir.GetFiles())
+        //    {
+        //        string targetFilePath = Path.Combine(destinationDir, file.Name);
+        //        file.CopyTo(targetFilePath);
+        //    }
+
+        //    // If recursive and copying subdirectories, recursively call this method
+        //    if (recursive)
+        //    {
+        //        foreach (DirectoryInfo subDir in dirs)
+        //        {
+        //            string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+        //            CopyDirectory(subDir.FullName, newDestinationDir, true);
+        //        }
+        //    }
+        //}
         //public static void CopyDirectoryMethod(string sourceDirectoryPath, string targetDirectoryPath)
         //{
         //    DirectoryInfo sourceDirectoryInfo = new DirectoryInfo(sourceDirectoryPath);
