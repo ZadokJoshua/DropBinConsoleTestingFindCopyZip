@@ -15,61 +15,52 @@ Console.WriteLine("Your project name: " + ProjectName);
 
 Loader.Loading();
 
-Console.WriteLine("Select an option");
-Console.WriteLine("\n\t1- DropBin only           2- Copy and DropBin");
-Console.WriteLine("\t3- Rename before DropBin  4- Do 2, 3 and DropBin\n");
-Console.Write("Option: ");
+int option = 0;
 
-int option = Convert.ToInt32(Console.ReadLine());
-
-Loader.Loading();
-
-switch (option)
+while (option!=4)
 {
-    case 1:
-        try
-        {
-            Operator.SwitchOperator(MainProjectPath, ProjectName);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        break;
+    Console.WriteLine("Select an option");
+    Console.WriteLine("\n\t1- DropBin only                2- Rename and DropBin");
+    Console.WriteLine("\t3- To Unzip DropBinned folder  4- To end program\n");
+    Console.Write("Option: ");
 
-    case 2:
-        try
-        {
-            Console.Write("Copy folder to: ");
-            string CopiedFolderPath = Console.ReadLine();
-            Copier.CopyDirectory(MainProjectPath, CopiedFolderPath);
-            string newFilePath = Path.Combine(CopiedFolderPath, ProjectName);
-            Operator.SwitchOperator(newFilePath, CopiedFolderPath, ProjectName);
-            Directory.Delete(newFilePath);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        break;
+    option = Convert.ToInt32(Console.ReadLine());
 
-    case 3:
-        Console.Write("Change zipped folder name to: ");
-        string NewProjectName = Console.ReadLine();
-        try
-        {
-            Operator.SwitchOperator(MainProjectPath, NewProjectName);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        break;
+    Loader.Loading();
 
-    case 4:
-        // Do case 2, 3 and DropBin
-        break;
+    switch (option)
+    {
+        case 1:
+            try
+            {
+                Operator.SwitchOperator(MainProjectPath, ProjectName);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            break;
 
-    default:
-        break;
+        case 2:
+            Console.Write("Change zipped folder name to: ");
+            string NewProjectName = Console.ReadLine();
+            try
+            {
+                Operator.SwitchOperator(MainProjectPath, NewProjectName);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            break;
+
+        case 3:
+            // To unzip folder
+            break;
+
+        default:
+            break;
+    } 
 }
+
+Console.WriteLine("Program has Ended");
